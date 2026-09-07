@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Recherche & bug bounty — Vulnérabilités web, API et mémoire | 0xTRACE</title>
+<meta name="description" content="Travaux de recherche en sécurité de Junior Tshikwej Yav (@hxh) : bug bounty sur YesWeHack et Intigriti, recherche de vulnérabilités web et API, et rapport Use-After-Free soumis au programme ARM sur le pilote GPU Mali.">
+<meta name="author" content="Junior Tshikwej Yav">
+<link rel="canonical" href="https://0xtrace.dev/research.html">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#EBE6DE">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="0xTRACE — Junior Tshikwej Yav">
+<meta property="og:title" content="Recherche & bug bounty — Vulnérabilités web, API et mémoire | 0xTRACE">
+<meta property="og:description" content="Travaux de recherche en sécurité de Junior Tshikwej Yav (@hxh) : bug bounty sur YesWeHack et Intigriti, recherche de vulnérabilités web et API, et rapport Use-After-Free soumis au programme ARM sur le pilote GPU Mali.">
+<meta property="og:url" content="https://0xtrace.dev/research.html">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:image" content="https://0xtrace.dev/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://0xtrace.dev/assets/og-image.jpg">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/app.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"CollectionPage",
+      "url":"https://0xtrace.dev/research.html",
+      "name":"Recherche en sécurité & bug bounty — 0xTRACE",
+      "inLanguage":"fr-FR",
+      "about":["Bug bounty","Recherche de vulnérabilités","Sécurité des applications web"],
+      "author":{"@id":"https://0xtrace.dev/#person"}
+    },
+    {
+      "@type":"BreadcrumbList",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"Accueil","item":"https://0xtrace.dev/"},
+        {"@type":"ListItem","position":2,"name":"Recherche","item":"https://0xtrace.dev/research.html"}
+      ]
+    }
+  ]
+}
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-66G0GLY5YP"></script>
+<script src="assets/analytics.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<div class="app">
+  <aside class="sidebar">
+    <a class="brand" href="index.html">
+      <span class="glyph" aria-hidden="true">&gt;_</span>
+      <span class="word">0xTRACE<small>DEV &amp; SÉCURITÉ</small></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <a href="index.html"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5M5 9.5V21h5v-6h4v6h5V9.5"/></svg>Accueil</a>
+      <a href="about.html"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>À propos</a>
+      <a href="services.html"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6z"/></svg>Services</a>
+      <a href="projects.html"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="m16 18 4-6-4-6M8 6l-4 6 4 6"/></svg>Projets</a>
+      <a class="active" href="research.html" aria-current="page"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6a4 4 0 0 1 8 0M6 10h12v4a6 6 0 0 1-12 0zM2 12h4M18 12h4M4 7l3 2M20 7l-3 2M4 18l3-2M20 18l-3-2"/></svg>Recherche<svg class="chev" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+      <a href="quiz.html"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>Quiz sécurité</a>
+      <a href="contact.html"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/></svg>Contact</a>
+    </nav>
+    <button class="menu-btn" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    <div class="side-foot">
+      <div class="me">
+        <span class="ava" aria-hidden="true">JT</span>
+        <span class="who"><b>Junior Tshikwej Yav</b><span>Ariana · TN</span></span>
+      </div>
+      <div class="status"><span class="dot" aria-hidden="true"></span> Recherche stage PFE — sécurité offensive</div>
+      <a class="btn ghost side-cta" href="cv/junior-tshikwej-yav-cv.pdf" download><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>Télécharger le CV</a>
+    </div>
+  </aside>
+
+  <main class="main" id="contenu">
+    <div class="topbar">
+      <p class="crumbs"><a href="index.html">Accueil</a> · Recherche</p>
+      <div class="top-actions"><a class="btn" href="contact.html">Me contacter</a></div>
+    </div>
+
+    <p class="eyebrow">Recherche &amp; bug bounty</p>
+    <h1 class="display">Ce que je<br><span class="hl">cherche.</span></h1>
+    <p class="lead">Chasseur actif sur les plateformes de bug bounty sous le pseudonyme <b>@hxh</b>. Mon terrain principal : la sécurité des applications web et des API. En parallèle, j'explore la recherche de vulnérabilités mémoire — un domaine plus exigeant, où j'apprends encore.</p>
+
+    <!-- Travail de recherche marquant -->
+    <section class="section-gap-lg">
+      <div class="grid2">
+        <div class="card reveal">
+          <div class="row tight">
+            <span class="badge wip">En cours de triage</span>
+            <span class="kw">CWE-416 · CWE-362</span>
+          </div>
+          <h2 class="section-gap">Use-After-Free — pilote GPU ARM Mali</h2>
+          <div class="prose">
+            <p>Découverte d'une situation de compétition menant à une utilisation après libération dans la fonction <code>kbase_mem_evictable_make()</code> du pilote GPU Mali Kbase (versions r49p1 à r49p0), déclenchable via le mécanisme de récupération mémoire du système.</p>
+            <p>Rapport technique détaillé soumis au programme ARM via Intigriti, accompagné d'une preuve de concept. <b>Statut actuel : en cours de triage — ni validé ni rejeté à ce jour.</b> Je mettrai cette page à jour quelle que soit l'issue.</p>
+            <p>Classe de vulnérabilité : CWE-416 (utilisation après libération) et CWE-362 (situation de compétition), au niveau du noyau Android.</p>
+            <h3>Pourquoi ça compte</h3>
+            <p>C'est ma première incursion sérieuse hors du web applicatif. Passer de la logique d'une API à la gestion mémoire d'un pilote noyau demande un raisonnement différent — et m'a appris autant sur le développement que sur l'attaque.</p>
+          </div>
+          <p class="form-note">Aucun détail d'exploitation n'est publié tant que le rapport est en triage. Divulgation coordonnée.</p>
+        </div>
+
+        <div class="term reveal">
+          <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div><span class="c"># plateformes</span></div>
+          <div class="sp"><span class="o">→</span> <span class="g">YesWeHack   @hxh</span></div>
+          <div><span class="o">→</span> <span class="g">Intigriti    @hxh</span></div>
+          <div class="sp"><span class="c"># classes de failles recherchees</span></div>
+          <div><span class="o">→</span> <span class="g">IDOR / BOLA — controle d'acces objet</span></div>
+          <div><span class="o">→</span> <span class="g">XSS — DOM-based, reflechi, stocke</span></div>
+          <div><span class="o">→</span> <span class="g">SSRF, CSRF, injection SQL</span></div>
+          <div><span class="o">→</span> <span class="g">API REST &amp; GraphQL — RBAC, logique metier</span></div>
+          <div><span class="o">→</span> <span class="g">contournement d'authentification</span></div>
+          <div class="sp"><span class="c"># regle non negociable</span></div>
+          <div><span class="c"># jamais de test hors perimetre autorise.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Terrains de chasse -->
+    <section class="section-gap">
+      <div class="card reveal">
+        <h2>Où je chasse</h2>
+        <p class="sub">Programmes publics et privés, dans le cadre défini par chaque plateforme.</p>
+        <div class="rows section-gap">
+          <div class="rowline">
+            <span class="ic" aria-hidden="true"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6a4 4 0 0 1 8 0M6 10h12v4a6 6 0 0 1-12 0zM2 12h4M18 12h4M4 7l3 2M20 7l-3 2M4 18l3-2M20 18l-3-2"/></svg></span>
+            <div class="lbl"><b>YesWeHack</b><span>Injection sur API REST et GraphQL, contournement d'authentification, failles de logique métier.</span></div>
+            <div class="val"><span>@hxh</span></div>
+          </div>
+          <div class="rowline">
+            <span class="ic" aria-hidden="true"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
+            <div class="lbl"><b>Intigriti</b><span>Recherche de XSS (DOM-based et réfléchies) sur applications web, reconnaissance OSINT et énumération.</span></div>
+            <div class="val"><span>@hxh</span></div>
+          </div>
+          <div class="rowline">
+            <span class="ic" aria-hidden="true"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M10 2v3M14 2v3M10 19v3M14 19v3M2 10h3M2 14h3M19 10h3M19 14h3"/></svg></span>
+            <div class="lbl"><b>Programme ARM</b><span>Recherche de vulnérabilités mémoire sur le pilote GPU Mali — rapport soumis, en triage.</span></div>
+            <div class="val"><span>en cours</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Méthode -->
+    <section class="grid2 section-gap">
+      <div class="card reveal">
+        <h2>Ma méthode</h2>
+        <div class="prose section-gap">
+          <p>La reconnaissance d'abord : cartographier la vraie surface d'attaque avec Amass, Shodan, la Wayback Machine et l'analyse des fichiers JavaScript, plutôt que de lancer un scanner sur la page d'accueil.</p>
+          <p>Ensuite le manuel. Les scanners trouvent les motifs connus ; ils ne trouvent pas qu'un identifiant de commande accepte celui du voisin, ni qu'un champ de rôle est modifiable depuis la requête. C'est là que le fait d'avoir écrit ce genre de back-end aide : je sais où les développeurs prennent des raccourcis, parce que je les ai pris.</p>
+        </div>
+        <div class="tags section-gap">
+          <span class="tag hot">Burp Suite</span><span class="tag">FFUF</span><span class="tag">Nuclei</span>
+          <span class="tag">Nmap</span><span class="tag">Postman</span><span class="tag">Amass</span>
+          <span class="tag">Shodan</span><span class="tag">Google Dorks</span><span class="tag">Wayback Machine</span>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <h2>Notes techniques</h2>
+        <p class="sub">Section en préparation.</p>
+        <div class="prose section-gap">
+          <p>Je prépare des notes écrites à partir de mon propre code plutôt que recopiées d'un cours : une faille précise, pourquoi elle est dangereuse, et le correctif exact.</p>
+          <p>Trois sujets en chantier, tirés directement de ce que j'ai rencontré :</p>
+          <ul>
+            <li>Les IDOR que j'ai trouvées et corrigées sur une API bancaire</li>
+            <li>Vérifier la propriété d'une ressource, pas seulement l'authentification, en ASP.NET Core</li>
+            <li>Ce que l'introspection GraphQL révèle sans qu'on l'ait demandé</li>
+          </ul>
+          <p>Je préfère publier trois articles solides que dix pages de remplissage.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <span>© <span data-year>2026</span> Junior Tshikwej Yav — Ariana, Tunisie.</span>
+      <span class="soc">
+        <a href="https://github.com/juniorbroozeur" rel="noopener noreferrer me" target="_blank">github</a>
+        <a href="https://www.linkedin.com/in/junior-tshikwej-yav-7a8baa358" rel="noopener noreferrer me" target="_blank">linkedin</a>
+        <a href="mailto:tshikwejj@gmail.com">email</a>
+      </span>
+    </footer>
+  </main>
+</div>
+</body>
+</html>

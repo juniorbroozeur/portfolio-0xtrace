@@ -1,0 +1,11 @@
+# https://0xtrace.dev/.well-known/security.txt — RFC 9116
+# Si tu trouves une faille sur ce site, dis-le moi : je corrige et je crédite.
+
+Contact: mailto:tshikwejj@gmail.com
+Contact: https://0xtrace.dev/contact.html
+Expires: 2027-09-03T00:00:00.000Z
+Preferred-Languages: fr, en
+Canonical: https://0xtrace.dev/.well-known/security.txt
+
+# Merci d'éviter les tests automatisés lourds et le déni de service.
+# Divulgation coordonnée : laisse-moi 30 jours avant publication.

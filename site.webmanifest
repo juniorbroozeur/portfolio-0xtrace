@@ -1,0 +1,16 @@
+{
+  "name": "0xTRACE — Junior Tshikwej Yav",
+  "short_name": "0xTRACE",
+  "description": "Développeur web & logiciel à Tunis. Angular, ASP.NET, C#, SQL.",
+  "lang": "fr-FR",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#EBE6DE",
+  "theme_color": "#EBE6DE",
+  "icons": [
+    { "src": "/assets/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

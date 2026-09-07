@@ -1,0 +1,13 @@
+# https://0xtrace.dev/robots.txt
+User-agent: *
+Allow: /
+
+# Pages sans intérêt pour la recherche
+Disallow: /merci.html
+
+# ⚠️ Ne PAS bloquer ici les pages qu'on veut désindexer :
+# une URL bloquée par robots.txt empêche Google de lire son
+# meta robots="noindex" — elle peut donc rester indexée à vide.
+# Pour exclure vraiment une page : meta noindex, et pas de Disallow.
+
+Sitemap: https://0xtrace.dev/sitemap.xml

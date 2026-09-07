@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Quiz sécurité — Teste tes connaissances en cybersécurité | 0xTRACE</title>
+<meta name="description" content="Deux quiz interactifs de cybersécurité par Junior Tshikwej Yav : sécurité web & bug bounty, et cybersécurité générale. Testez vos connaissances, obtenez votre score et votre rang. Gratuit, sans inscription.">
+<meta name="author" content="Junior Tshikwej Yav">
+<link rel="canonical" href="https://0xtrace.dev/quiz.html">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#EBE6DE">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="0xTRACE — Junior Tshikwej Yav">
+<meta property="og:title" content="Quiz sécurité — Teste tes connaissances en cybersécurité">
+<meta property="og:description" content="Deux quiz : sécurité web & bug bounty, et cybersécurité générale. Score et rang à la fin.">
+<meta property="og:url" content="https://0xtrace.dev/quiz.html">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:image" content="https://0xtrace.dev/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://0xtrace.dev/assets/og-image.jpg">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/app.js" defer></script>
+<script src="assets/quiz.js" defer></script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"Quiz",
+      "name":"Quiz de cybersécurité — 0xTRACE",
+      "about":["Sécurité des applications web","Bug bounty","Cybersécurité"],
+      "educationalLevel":"Intermédiaire",
+      "inLanguage":"fr-FR",
+      "author":{"@id":"https://0xtrace.dev/#person"}
+    },
+    {
+      "@type":"BreadcrumbList",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"Accueil","item":"https://0xtrace.dev/"},
+        {"@type":"ListItem","position":2,"name":"Quiz sécurité","item":"https://0xtrace.dev/quiz.html"}
+      ]
+    }
+  ]
+}
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-66G0GLY5YP"></script>
+<script src="assets/analytics.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<div class="app">
+  <aside class="sidebar">
+    <a class="brand" href="index.html">
+      <span class="glyph" aria-hidden="true">&gt;_</span>
+      <span class="word">0xTRACE<small>DEV &amp; SÉCURITÉ</small></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <a href="index.html"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5M5 9.5V21h5v-6h4v6h5V9.5"/></svg>Accueil</a>
+      <a href="about.html"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>À propos</a>
+      <a href="services.html"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6z"/></svg>Services</a>
+      <a href="projects.html"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="m16 18 4-6-4-6M8 6l-4 6 4 6"/></svg>Projets</a>
+      <a href="research.html"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6a4 4 0 0 1 8 0M6 10h12v4a6 6 0 0 1-12 0zM2 12h4M18 12h4M4 7l3 2M20 7l-3 2M4 18l3-2M20 18l-3-2"/></svg>Recherche</a>
+      <a class="active" href="quiz.html" aria-current="page"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>Quiz sécurité<svg class="chev" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+      <a href="contact.html"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/></svg>Contact</a>
+    </nav>
+    <button class="menu-btn" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    <div class="side-foot">
+      <div class="me">
+        <span class="ava" aria-hidden="true">JT</span>
+        <span class="who"><b>Junior Tshikwej Yav</b><span>Ariana · TN</span></span>
+      </div>
+      <div class="status"><span class="dot" aria-hidden="true"></span> Recherche stage PFE — sécurité offensive</div>
+      <a class="btn ghost side-cta" href="cv/junior-tshikwej-yav-cv.pdf" download><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>Télécharger le CV</a>
+    </div>
+  </aside>
+
+  <main class="main" id="contenu">
+    <div class="topbar">
+      <p class="crumbs"><a href="index.html">Accueil</a> · Quiz sécurité</p>
+      <div class="top-actions"><a class="btn" href="contact.html">Me contacter</a></div>
+    </div>
+
+    <p class="eyebrow">Quiz sécurité</p>
+    <h1 class="display">Teste tes<br>réflexes de <span class="hl">sécurité.</span></h1>
+    <p class="lead">Deux quiz au choix : la sécurité des applications web et le bug bounty — mon terrain — ou la cybersécurité générale. Dix questions, un score, un rang. Rien n'est envoyé sur un serveur : tout reste dans ton navigateur.</p>
+
+    <!-- ÉCRAN 1 : choix du thème -->
+    <section id="q-home" class="section-gap-lg">
+      <div class="grid2">
+        <button class="item linked quiz-pick" type="button" data-theme="web">
+          <span class="ic" aria-hidden="true"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6z"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <h3>Sécurité web &amp; bug bounty</h3>
+          <p>IDOR, XSS, SSRF, sécurité des API, JWT, OWASP Top 10. Le niveau d'un chasseur de bugs. Plutôt costaud.</p>
+          <span class="row"><span class="badge live">10 questions</span><span class="go">Commencer <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></span>
+        </button>
+
+        <button class="item linked quiz-pick" type="button" data-theme="general">
+          <span class="ic" aria-hidden="true"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span>
+          <h3>Cybersécurité générale</h3>
+          <p>Mots de passe, phishing, chiffrement, réseaux, hygiène numérique. Accessible à tous, sans jargon.</p>
+          <span class="row"><span class="badge wip">10 questions</span><span class="go">Commencer <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></span>
+        </button>
+      </div>
+
+      <div class="card reveal section-gap" id="q-board-home" hidden>
+        <div class="row tight">
+          <h2>Meilleurs scores</h2>
+          <button class="go" type="button" id="q-clear" title="Effacer les scores enregistrés">Effacer</button>
+        </div>
+        <p class="sub">Enregistrés sur cet appareil uniquement — rien n'est partagé en ligne.</p>
+        <div id="q-board"></div>
+      </div>
+    </section>
+
+    <!-- ÉCRAN 2 : quiz en cours -->
+    <section id="q-play" hidden>
+      <div class="card">
+        <div class="row tight">
+          <span class="badge live" id="q-theme-label">—</span>
+          <span class="kw" id="q-progress">Question 1 / 10</span>
+        </div>
+        <div class="bar section-gap" aria-hidden="true"><i id="q-bar" class="w0"></i></div>
+        <h2 class="section-gap" id="q-stem">…</h2>
+        <div class="rows section-gap" id="q-options" role="group" aria-label="Réponses"></div>
+        <div class="row section-gap">
+          <span class="kw" id="q-feedback"></span>
+          <button class="btn block" type="button" id="q-next" disabled>Valider</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ÉCRAN 3 : résultat -->
+    <section id="q-result" hidden>
+      <div class="card">
+        <p class="eyebrow" id="q-rank-eyebrow">Résultat</p>
+        <div class="row tight">
+          <h2 id="q-rank">—</h2>
+          <span class="pole-num" id="q-score" aria-hidden="true">0/10</span>
+        </div>
+        <p class="sub" id="q-verdict">…</p>
+
+        <div class="field section-gap">
+          <label for="q-name">Ton pseudo, pour l'enregistrer localement</label>
+          <input id="q-name" type="text" maxlength="24" autocomplete="off" placeholder="ex. n3o, alice, anonyme…">
+        </div>
+        <div class="row">
+          <button class="btn" type="button" id="q-save">Enregistrer mon score</button>
+          <button class="btn ghost" type="button" id="q-again">Rejouer</button>
+        </div>
+        <p class="form-note" id="q-saved-note" hidden>Score enregistré sur cet appareil.</p>
+      </div>
+
+      <div class="card reveal section-gap" id="q-review">
+        <h2>Correction</h2>
+        <p class="sub">Ce que tu as raté, et pourquoi.</p>
+        <div class="rows section-gap" id="q-review-list"></div>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <span>© <span data-year>2026</span> Junior Tshikwej Yav — Ariana, Tunisie.</span>
+      <span class="soc">
+        <a href="https://github.com/juniorbroozeur" rel="noopener noreferrer me" target="_blank">github</a>
+        <a href="https://www.linkedin.com/in/junior-tshikwej-yav-7a8baa358" rel="noopener noreferrer me" target="_blank">linkedin</a>
+        <a href="mailto:tshikwejj@gmail.com">email</a>
+      </span>
+    </footer>
+  </main>
+</div>
+</body>
+</html>
